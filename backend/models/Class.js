@@ -7,3 +7,6 @@ const classSchema = new mongoose.Schema({
 
 const Class = mongoose.model('Class', classSchema);
 export default Class;
+// mongodb+srv://mohaalpha74_db_user:GCdeJHFedsjPvi07@cluster0.jqpozyk.mongodb.net/?appName=Cluster0
+// GCdeJHFedsjPvi07
+// mohaalpha74_db_user
