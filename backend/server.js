@@ -14,7 +14,7 @@ import markRoutes from './routes/markRoutes.js';
 import classRoutes from './routes/classRoutes.js';
 import correctionRoutes from './routes/correctionRoutes.js';
 
-dotenv.config();
+dotenv.config({ path: '../.env' });
 
 connectDB();
 
@@ -45,10 +45,15 @@ const __dirname = path.dirname(__filename);
 
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
-    app.use(express.static(path.join(__dirname, '/dist')));
+    // In production, server is running from root or backend. 
+    // If we run from root, client/dist is at ./client/dist
+    // If we run from backend, it's at ../client/dist
+    // Given the structure, let's assume we want to be flexible or hardcode to client/dist relative to where process runs.
+
+    app.use(express.static(path.join(__dirname, '/client/dist')));
 
     app.get('*', (req, res) =>
-        res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+        res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
     );
 }
 

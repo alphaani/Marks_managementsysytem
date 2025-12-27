@@ -10,7 +10,7 @@ import CorrectionRequest from './models/CorrectionRequest.js';
 import Class from './models/Class.js';
 import bcrypt from 'bcryptjs';
 
-dotenv.config();
+dotenv.config({ path: '../.env' });
 
 connectDB();
 
